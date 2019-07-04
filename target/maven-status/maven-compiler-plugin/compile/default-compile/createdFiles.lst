@@ -1,0 +1,13 @@
+com/ztbsuper/dingtalk/DingTalkNotifier.class
+com/ztbsuper/dingding/DingdingService.class
+com/ztbsuper/dingtalk/DingTalkNotifier$DescriptorImpl.class
+com/ztbsuper/dingding/DingdingNotifier.stapler
+com/ztbsuper/Messages.class
+com/ztbsuper/dingding/DingdingNotifier$DingdingNotifierDescriptor.class
+META-INF/annotations/org.jenkinsci.Symbol
+com/ztbsuper/dingding/DingdingServiceImpl.class
+com/ztbsuper/dingding/DingdingNotifier.class
+com/ztbsuper/dingtalk/DingTalkNotifier.stapler
+com/ztbsuper/dingtalk/DingTalkNotifier/DescriptorImpl/doCheck.stapler
+com/ztbsuper/dingding/JobListener.class
+META-INF/annotations/hudson.Extension

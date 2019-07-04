@@ -21,6 +21,7 @@ import org.kohsuke.stapler.QueryParameter;
 import ren.wizard.dingtalkclient.DingTalkClient;
 import ren.wizard.dingtalkclient.message.DingMessage;
 import ren.wizard.dingtalkclient.message.LinkMessage;
+import ren.wizard.dingtalkclient.message.TextMessage;
 
 import javax.annotation.Nonnull;
 import java.io.IOException;
@@ -32,17 +33,19 @@ public class DingTalkNotifier extends Notifier implements SimpleBuildStep {
 
     private String accessToken;
     private String notifyPeople;
+    private String title;
     private String message;
     private String imageUrl;
     private String jenkinsUrl;
 
     @DataBoundConstructor
-    public DingTalkNotifier(String accessToken, String notifyPeople, String message, String imageUrl, String jenkinsUrl) {
+    public DingTalkNotifier(String accessToken, String notifyPeople, String message, String imageUrl, String jenkinsUrl, String title) {
         this.accessToken = accessToken;
         this.notifyPeople = notifyPeople;
         this.message = message;
         this.imageUrl = imageUrl;
         this.jenkinsUrl = jenkinsUrl;
+        this.title = title;
     }
 
     public String getAccessToken() {
@@ -90,16 +93,30 @@ public class DingTalkNotifier extends Notifier implements SimpleBuildStep {
         this.jenkinsUrl = jenkinsUrl;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    @DataBoundSetter
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     @Override
     public void perform(@Nonnull Run<?, ?> run, @Nonnull FilePath filePath, @Nonnull Launcher launcher, @Nonnull TaskListener taskListener) throws InterruptedException, IOException {
         String buildInfo = run.getFullDisplayName();
-        if (!StringUtils.isBlank(message)) {
-            sendMessage(LinkMessage.builder()
-                    .title(buildInfo + message)
-                    .picUrl(imageUrl)
-                    .text(message)
-                    .messageUrl((jenkinsUrl.endsWith("/") ? jenkinsUrl : jenkinsUrl + "/") + run.getUrl())
-                    .build());
+        if (!StringUtils.isBlank(message) || !StringUtils.isBlank(title)) {
+            String content = buildInfo + title + "\n" + message;
+            if (title.contains("成功")) {
+                sendMessage(TextMessage.builder().text(content).build());
+            } else {
+                sendMessage(LinkMessage.builder()
+                        .title(buildInfo + title)
+                        .picUrl(imageUrl)
+                        .text(message)
+                        .messageUrl((jenkinsUrl.endsWith("/") ? jenkinsUrl : jenkinsUrl + "/") + run.getUrl())
+                        .build());
+            }
         }
     }
 

@@ -1,0 +1,26 @@
+Manifest-Version: 1.0
+Group-Id: com.ztbsuper
+Short-Name: dingding-notifications
+Long-Name: Dingding[钉钉] Plugin
+Url: https://wiki.jenkins-ci.org/display/JENKINS/Dingding+Notification
+ +Plugin
+Plugin-Version: 1.10-SNAPSHOT (private-6cdb85c5-fotoable)
+Hudson-Version: 2.7.3
+Jenkins-Version: 2.7.3
+Plugin-Dependencies: structs:1.7
+Plugin-Developers: Marvin Zhang:ztbsuper:ztbsuper@gmail.com
+Libraries: /Users/fotoable/dingding-custom-notifications-plugin/src/ma
+ in/resources,/Users/fotoable/dingding-custom-notifications-plugin/tar
+ get/classes,/Users/fotoable/.m2/repository/com/google/code/gson/gson/
+ 2.8.2/gson-2.8.2.jar,/Users/fotoable/.m2/repository/com/alibaba/fastj
+ son/1.2.12/fastjson-1.2.12.jar,/Users/fotoable/.m2/repository/com/git
+ hub/chnyangjie/dingTalkClient/0.0.8/dingTalkClient-0.0.8.jar,/Users/f
+ otoable/.m2/repository/org/apache/httpcomponents/httpcore/4.4.9/httpc
+ ore-4.4.9.jar,/Users/fotoable/.m2/repository/org/projectlombok/lombok
+ /1.16.20/lombok-1.16.20.jar,/Users/fotoable/.m2/repository/org/apache
+ /httpcomponents/httpclient/4.5.5/httpclient-4.5.5.jar,/Users/fotoable
+ /.m2/repository/org/apache/commons/commons-lang3/3.7/commons-lang3-3.
+ 7.jar
+Resource-Path: /Users/fotoable/dingding-custom-notifications-plugin/sr
+ c/main/webapp
+
